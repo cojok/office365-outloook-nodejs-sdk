@@ -1,0 +1,26 @@
+{
+  "name": "office365-outloook-nodejs-sdk",
+  "version": "0.0.1",
+  "description": "Nodejs sdk to connect and work with the mail and events from your organization office 365 outlook. This project uses the microsoft graph api and several auth oprions. Use wise",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cojok/office365-outloook-nodejs-sdk.git"
+  },
+  "keywords": [
+    "office365.",
+    "email",
+    "connector",
+    "nodejs",
+    "sdk"
+  ],
+  "author": "Flavius Cojocariu <cojokka@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cojok/office365-outloook-nodejs-sdk/issues"
+  },
+  "homepage": "https://github.com/cojok/office365-outloook-nodejs-sdk#readme"
+}
