@@ -8,7 +8,7 @@
     <img alt="Maintenance" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" />
   </a>
   <a href="https://github.com/cojok/office365-outloook-nodejs-sdk/blob/master/LICENSE" target="_blank">
-    <img alt="License: MIT" src="https://img.shields.io/github/license//office365-outloook-nodejs-sdk" />
+    <img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-green" />
   </a>
 </p>
 
