@@ -1,21 +1,6 @@
-// import MsGraphAuthService from './services/msGraphAuthService.js';
+import express from 'express';
 
-// console.log(new MsGraphAuthService());
-
-// import EmailComponent from './components/emailComponent.js';
-
-// new EmailComponent();
-
-// const mainApp = 'test';
-
-// export default mainApp;
-
-
-import express, { response } from 'express';
-import path from 'path';
-
-import MsGraphAuthService from '../src/services/msGraphAuthService.js';
-import EmailComponent from '../src/components/emailComponent.js';
+import { MsGraphAuthService, EmailComponent } from '../src/app.js';
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -23,12 +8,10 @@ const port = process.env.PORT || 3000;
 const authService = new MsGraphAuthService();
 const emailComponent = new EmailComponent(authService);
 
-app.use(express.static('./docs'));
+app.use(express.json());
+
 app.get('/', (req, res) => {
   res.json('hey there');
-  // res.sendFile('index.html', {
-  //   root: path.join(__dirname, './docs'),
-  // });
 });
 
 app.get('/auth/signin',
@@ -36,12 +19,10 @@ app.get('/auth/signin',
     try {
       const authUrl = await authService.getAuthURL();
       res.json({ authUrl });
-      // res.redirect(authUrl);
     }
     catch (error) {
       console.log(`Error: ${error}`);
       res.json(error);
-      // res.redirect('/');
     }
   }
 );
@@ -49,9 +30,6 @@ app.get('/auth/signin',
 app.get('/auth/callback', async (req, res) => {
   try {
     const response = await authService.getAuthDetails(req.query.code);
-    // const userId = response.account.homeAccountId;
-    // const client = await authService.getAuthenticatedClient(response.accessToken);
-    // const user = await client.api('/me').select('displayName,mail,mailboxSettings,userPrincipalName').get();
     return res.json(response);
   } catch (error) {
     console.log(JSON.stringify(error, Object.getOwnPropertyNames(error)));
@@ -64,6 +42,18 @@ app.get('/emails', async (req, res) => {
   try {
     const response = await emailComponent.getEmailAddresses(req.query.token);
     return res.json(response);
+  } catch (error) {
+    console.log(JSON.stringify(error, Object.getOwnPropertyNames(error)));
+    return res.json(error);
+  }
+});
+
+app.post('/send-emails', async function (req, res) {
+  try {
+    const accessToken = req.body.token;
+    const data = req.body.data;
+    await emailComponent.sendEmail(accessToken, data);
+    return res.sendStatus(202);
   } catch (error) {
     console.log(JSON.stringify(error, Object.getOwnPropertyNames(error)));
     return res.json(error);

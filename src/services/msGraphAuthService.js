@@ -1,7 +1,7 @@
 import msal from '@azure/msal-node';
 import graph from '@microsoft/microsoft-graph-client';
 import config from '../config/index.js';
-import fetch from 'isomorphic-fetch';
+import 'isomorphic-fetch';
 
 export default class MsGraphAuthService {
 
