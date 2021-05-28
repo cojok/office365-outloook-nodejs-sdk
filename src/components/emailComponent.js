@@ -17,6 +17,7 @@ export default class EmailComponent {
             address: email.address,
             displayName: email.displayName,
             type: email.type,
+            id: email.id,
           }
         });
       } catch (error) {
