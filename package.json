@@ -3,7 +3,10 @@
   "version": "0.0.1",
   "description": "Nodejs sdk to connect and work with the mail and events from your organization office 365 outlook. This project uses the microsoft graph api and several auth oprions. Use wise",
   "main": "index.js",
+  "type": "module",
   "scripts": {
+    "docs": "node_modules/.bin/jsdoc --configure ./jsdoc-conf.json",
+    "dev": "export NODE_ENV=development && nodemon --exec babel-node ./index.js",
     "test": "npm run test"
   },
   "repository": {
@@ -22,5 +25,38 @@
   "bugs": {
     "url": "https://github.com/cojok/office365-outloook-nodejs-sdk/issues"
   },
-  "homepage": "https://github.com/cojok/office365-outloook-nodejs-sdk#readme"
+  "homepage": "https://github.com/cojok/office365-outloook-nodejs-sdk#readme",
+  "dependencies": {
+    "@azure/msal-node": "^1.1.0",
+    "@microsoft/microsoft-graph-client": "^2.2.1",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "isomorphic-fetch": "^3.0.0",
+    "moment": "^2.29.1",
+    "moment-timezone": "^0.5.33",
+    "nodemon": "^2.0.7",
+    "path": "^0.12.7",
+    "pino": "^6.11.3",
+    "uuid": "^3.4.0",
+    "windows-iana": "^5.0.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.14.3",
+    "@babel/core": "^7.14.3",
+    "@babel/node": "^7.14.2",
+    "@babel/plugin-transform-runtime": "^7.14.3",
+    "@babel/preset-env": "^7.14.2",
+    "@babel/register": "^7.13.16",
+    "@babel/runtime": "^7.14.0",
+    "babel-loader": "^8.2.2",
+    "chai": "^4.3.4",
+    "clean-jsdoc-theme": "^3.2.7",
+    "eslint": "^7.27.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.23.3",
+    "jsdoc": "^3.6.7",
+    "jsdoc-mermaid": "^1.0.0",
+    "mocha": "^8.4.0",
+    "nyc": "^15.1.0"
+  }
 }
