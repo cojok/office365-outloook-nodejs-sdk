@@ -1,0 +1,50 @@
+
+{
+  "source": {
+      "include": ["src", "README.md"],
+      "includePattern": ".+\\.js?$",
+      "excludePattern": "(node_modules/|docs)"
+  },
+  "sourceType": false,
+  "plugins": [
+      "plugins/markdown",
+      "jsdoc-mermaid"
+  ],
+  "templates": {
+      "cleverLinks": false,
+      "monospaceLinks": true,
+      "default": {
+        "outputSourceFiles": false
+      }
+  },
+  "opts":{
+    "encoding": "utf8",
+    "readme": "./README.md",
+    "destination": "docs/",
+    "recurse": true,
+    "verbose": true,
+    "template": "./node_modules/clean-jsdoc-theme",
+    "theme_opts":{
+      "title": "Square Cup Labs - office365-outloook-nodejs-sdk",
+      "filter": true,
+      "create_style": ".details{display:none} h1.page-title::after{background: #c2c2c2}" ,
+      "menu": [
+      {
+        "title": "Square Cup Labs - office365-outloook-nodejs-sdk",
+        "link": "https://gitlab.com/cojokka/inventory-service-square-cup",
+        "target": "_blank"
+      },
+      {
+        "title": "Gitlab",
+        "link": "https://gitlab.com/cojokka/inventory-service-square-cup",
+        "target": "_blank"
+      }
+    ],
+    "meta": [
+      "<meta name=\"author\" content=\"Flavius Cojocariu\">",
+      "<meta name=\"description\" content=\"Nodejs sdk to easily interact with office 365 mail api\">"
+    ],
+    "footer": "This is footer" 
+    }
+  }
+}
