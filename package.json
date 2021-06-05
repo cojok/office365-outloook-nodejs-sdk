@@ -1,6 +1,6 @@
 {
   "name": "office365-outloook-nodejs-sdk",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Nodejs sdk to connect and work with the mail and events from your organization office 365 outlook. This project uses the microsoft graph api and several auth oprions. Use wise",
   "main": "index.js",
   "type": "module",
