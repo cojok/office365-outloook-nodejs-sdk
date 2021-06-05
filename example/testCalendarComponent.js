@@ -40,7 +40,7 @@ app.get('/auth/callback', async (req, res) => {
 
 app.get('/calendarView', async (req, res) => {
   try {
-    const response = await calendarComponent.getCalendars(req.query.token,req.query.timeZone);
+    const response = await calendarComponent.getAllEvents(req.query.token, req.query.timeZone);
     return res.json(response);
   } catch (error) {
     console.log(JSON.stringify(error, Object.getOwnPropertyNames(error)));
@@ -48,6 +48,15 @@ app.get('/calendarView', async (req, res) => {
   }
 });
 
+app.get('/event-id', async (req, res) => {
+  try {
+    const response = await calendarComponent.getEventById(req.query.token, req.query.timeZone, req.query.id);
+    return res.json(response);
+  } catch (error) {
+    console.log(JSON.stringify(error, Object.getOwnPropertyNames(error)));
+    return res.json(error);
+  }
+});
 
 app.listen(port, () => {
   console.log('DOCS running', port);
