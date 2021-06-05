@@ -58,6 +58,16 @@ app.get('/event-id', async (req, res) => {
   }
 });
 
+app.post('/new-event', async (req, res) => {
+  try {
+    const response = await calendarComponent.createNewEvent(req.query.token, req.query.timeZone, req.body.data);
+    return res.json(response);
+  } catch (error) {
+    console.log(JSON.stringify(error, Object.getOwnPropertyNames(error)));
+    return res.json(error);
+  }
+});
+
 app.listen(port, () => {
   console.log('DOCS running', port);
 });

@@ -55,4 +55,49 @@ export default class CalendarComponent {
       throw new Error('No access token provided');
     }   
   }
+
+  async createNewEvent(accessToken, timeZone, data) {
+    if(accessToken) {
+      try {
+        const client =  await this.authService.getAuthenticatedClient(accessToken);
+        const newEvent = {
+          subject: data.subject,
+          start: {
+            dateTime: data.start,
+            timeZone: timeZone
+          },
+          end: {
+            dateTime: data.end,
+            timeZone: timeZone
+          },
+          body: {
+            contentType: 'text',
+            content: data.body
+          }
+        };
+        if (data.attendees) {
+          newEvent.attendees = [];
+          data.attendees.forEach(attendee => {
+            newEvent.attendees.push({
+              type: 'required',
+              emailAddress: {
+                address: attendee
+              }
+            });
+          });
+        } else {
+          throw new Error('Can\'t creat event without at least 1 attendee');
+        }
+        await client
+        .api('/me/events')
+        .post(newEvent);
+        return newEvent;
+      } catch (error) {
+        console.log(JSON.stringify(error, Object.getOwnPropertyNames(error)));
+        throw new Error(error);
+      }
+    } else {
+      throw new Error('No access token provided');
+    }
+  }
 }
