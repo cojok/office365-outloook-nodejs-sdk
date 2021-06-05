@@ -44,7 +44,7 @@ export default class MsGraphAuthService {
       const userDetails = await client.api('/me').select('displayName,mail,mailboxSettings,userPrincipalName').get();
       // const userDetails = await graph.getUserDetails(response.accessToken);
   
-      //   // Add the user details
+        // Add the user details
       const user = {
         displayName: userDetails.displayName,
         email: userDetails.mail || userDetails.userPrincipalName,
