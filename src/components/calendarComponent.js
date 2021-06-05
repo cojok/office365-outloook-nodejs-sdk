@@ -56,6 +56,7 @@ export default class CalendarComponent {
     }   
   }
 
+  // TODO: decide what extra fields are still needed for the new event
   async createNewEvent(accessToken, timeZone, data) {
     if(accessToken) {
       try {
