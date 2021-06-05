@@ -8,6 +8,7 @@
     "docs": "node_modules/.bin/jsdoc --configure ./jsdoc-conf.json",
     "dev": "export NODE_ENV=development && nodemon --exec babel-node ./index.js",
     "build": "babel src --out-dir dist",
+    "lint": "./node_modules/.bin/eslint ./src",
     "test": "npm run test"
   },
   "repository": {
@@ -31,6 +32,7 @@
     "@azure/msal-node": "^1.1.0",
     "@microsoft/microsoft-graph-client": "^2.2.1",
     "dotenv": "^10.0.0",
+    "eslint-config-airbnb": "^18.2.1",
     "express": "^4.17.1",
     "isomorphic-fetch": "^3.0.0",
     "moment": "^2.29.1",

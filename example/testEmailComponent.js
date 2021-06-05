@@ -15,7 +15,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/auth/signin',
-  async function (req, res) {
+  async (req, res) => {
     try {
       const authUrl = await authService.getAuthURL();
       res.json({ authUrl });
@@ -38,7 +38,7 @@ app.get('/auth/callback', async (req, res) => {
   res.redirect('/');
 });
 
-app.get('/emails', async (req, res) => {
+app.get('/emails/address', async (req, res) => {
   try {
     const response = await emailComponent.getEmailAddresses(req.query.token);
     return res.json(response);
@@ -48,12 +48,32 @@ app.get('/emails', async (req, res) => {
   }
 });
 
-app.post('/send-emails', async function (req, res) {
+app.post('/emails/send', async (req, res) => {
   try {
     const accessToken = req.body.token;
-    const data = req.body.data;
+    const { data } = req.body;
     await emailComponent.sendEmail(accessToken, data);
     return res.sendStatus(202);
+  } catch (error) {
+    console.log(JSON.stringify(error, Object.getOwnPropertyNames(error)));
+    return res.json(error);
+  }
+});
+
+app.get('/emails', async (req, res) => {
+  try {
+    const response = await emailComponent.getAllEmails(req.query.token);
+    return res.json(response);
+  } catch (error) {
+    console.log(JSON.stringify(error, Object.getOwnPropertyNames(error)));
+    return res.json(error);
+  }
+});
+
+app.get('/emails/:id', async (req, res) => {
+  try {
+    const response = await emailComponent.getEmailById(req.query.token, req.params.id);
+    return res.json(response);
   } catch (error) {
     console.log(JSON.stringify(error, Object.getOwnPropertyNames(error)));
     return res.json(error);

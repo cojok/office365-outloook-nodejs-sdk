@@ -6,7 +6,7 @@ const configObject = {
   auth: {
     clientId: process.env.OAUTH_APP_ID,
     authority: process.env.OAUTH_AUTHORITY,
-    clientSecret: process.env.OAUTH_APP_SECRET
+    clientSecret: process.env.OAUTH_APP_SECRET,
   },
   system: {
     loggerOptions: {
@@ -14,10 +14,10 @@ const configObject = {
         console.log(message);
       },
       piiLoggingEnabled: false,
-    }
+    },
   },
   scope: process.env.OAUTH_SCOPES,
   redirectURI: process.env.OAUTH_REDIRECT_URI,
-}
+};
 
 export default configObject;
