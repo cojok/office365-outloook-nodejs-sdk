@@ -3,7 +3,6 @@
   "version": "0.2.0",
   "description": "Nodejs sdk to connect and work with the mail and events from your organization office 365 outlook. This project uses the microsoft graph api and several auth oprions. Use wise",
   "main": "index.js",
-  "type": "module",
   "scripts": {
     "docs": "node_modules/.bin/jsdoc --configure ./jsdoc-conf.json",
     "dev": "export NODE_ENV=development && nodemon --exec babel-node ./index.js",
@@ -31,6 +30,7 @@
   "dependencies": {
     "@azure/msal-node": "^1.1.0",
     "@microsoft/microsoft-graph-client": "^2.2.1",
+    "axios": "^0.21.1",
     "dotenv": "^10.0.0",
     "eslint-config-airbnb": "^18.2.1",
     "express": "^4.17.1",
@@ -51,6 +51,7 @@
     "@babel/preset-env": "^7.14.2",
     "@babel/register": "^7.13.16",
     "@babel/runtime": "^7.14.0",
+    "auto-changelog": "^2.3.0",
     "babel-loader": "^8.2.2",
     "chai": "^4.3.4",
     "clean-jsdoc-theme": "^3.2.7",

@@ -30,6 +30,10 @@ export default class MsGraphAuthService {
     }
   }
 
+  async getToken() {
+    const 
+  }
+
   async getAuthDetails (code) {
     const tokenRequest = {
       code: code,
